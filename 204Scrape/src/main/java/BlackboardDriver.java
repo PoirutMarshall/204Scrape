@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 public class BlackboardDriver implements BlackboardVars{
@@ -11,8 +12,9 @@ public class BlackboardDriver implements BlackboardVars{
 		
 		BlackboardClient client = new BlackboardClient();
 		
+		//mymc login
 		client.login(USERNAME, PASSWORD);
-
+		
 		client.download(WEEK1, DESTINATION);
 		client.download(WEEK2, DESTINATION);
 		client.download(WEEK3, DESTINATION);
@@ -27,6 +29,12 @@ public class BlackboardDriver implements BlackboardVars{
 		client.download(WEEK12, DESTINATION);
 		client.download(WEEK13, DESTINATION);
 		client.download(WEEK14, DESTINATION);
+		
+		try {
+			client.quit();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 	}
 }
